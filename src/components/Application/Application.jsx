@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Application.css';
 import Pagination from '@material-ui/lab/Pagination';
-import { TextField, CircularProgress } from '@mui/material';
+import { TextField, CircularProgress, Skeleton } from '@mui/material';
 
 function PokemonList() {
     const [loading, setLoading] = useState(true);
@@ -92,12 +92,17 @@ function PokemonList() {
                                 <h4>{poke.name}</h4>
                                 {pokemonImages[poke.name] ? (
                                     <img
-                                        src={pokemonImages[poke.name]}
+                                        src={pokemonImages[poke.name]} 
                                         alt={poke.name}
-                                        style={{ width: '80px' }}
+                                        style={{ width: '80px',height:'80px' }}
                                     />
                                 ) : (
-                                    <p>Loading image...</p>
+                                    <Skeleton
+                                    sx={{ bgcolor: 'grey' }}
+                                    variant="circle"
+                                    width={80}
+                                    height={80}
+                                  />
                                 )}
                             </div>
                         ))}
